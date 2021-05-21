@@ -114,10 +114,10 @@ from collections import Counter
 a6 = np.array([1,1,2,2,3,4,5,5,5])
 
 def find_dups(x):
+    u = list(np.unique(x))
     y = []
-    for i in x:
-        z = Counter(i)
-        if z > 1:
-            y += z
-    return y
+    for i in u:
+        if u.count(i) > 1:
+            y += i
+    return u, y
 print(find_dups(a6))
