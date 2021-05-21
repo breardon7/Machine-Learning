@@ -105,8 +105,19 @@ def factorial(x):
             z = z*i
     return z
 
-print(factorial(4))
+print(factorial(10))
 
 #--------------------------------------------------------
-# 5
+# 6
 #--------------------------------------------------------
+from collections import Counter
+a6 = np.array([1,1,2,2,3,4,5,5,5])
+
+def find_dups(x):
+    y = []
+    for i in x:
+        z = Counter(i)
+        if z > 1:
+            y += z
+    return y
+print(find_dups(a6))
