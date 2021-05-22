@@ -110,14 +110,32 @@ print(factorial(10))
 #--------------------------------------------------------
 # 6
 #--------------------------------------------------------
-from collections import Counter
+
 a6 = np.array([1,1,2,2,3,4,5,5,5])
 
 def find_dups(x):
-    u = list(np.unique(x))
+    l = list(x)
     y = []
-    for i in u:
-        if u.count(i) > 1:
-            y += i
-    return u, y
+    for i in range(len(l)):
+        if l.count(l[i]) > 1:
+            if l[i] not in y:
+                y += [l[i]]
+    return y
 print(find_dups(a6))
+
+#--------------------------------------------------------
+# 7
+#--------------------------------------------------------
+
+a7 = np.array([1,4,2,3])
+
+def second_largest(x):
+    l = list(a7)
+    l.sort()
+    return l[-2]
+print(second_largest(a7))
+
+#--------------------------------------------------------
+# 8
+#--------------------------------------------------------
+
