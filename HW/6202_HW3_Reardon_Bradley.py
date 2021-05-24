@@ -3,7 +3,8 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+from matplotlib import cm
+from matplotlib.ticker import MaxNLocator
 #------------------------------------------------------
 #E.1 (answer contained within triple quote)
 #------------------------------------------------------
@@ -59,9 +60,12 @@ ii.
 @ (2,1): [4, 2]
 @ (0,0): [0, 0]
 '''
-***********************
-PLOT
-***********************
+x = np.array([1,2,0])
+y = np.array([2,1,0])
+z4 = x**2 + y**2
+plt.plot(z4)
+plt.title('E.4')
+plt.show()
 
 #------------------------------------------------------
 #E.5 (partial answer contained within triple quote)
@@ -78,9 +82,25 @@ ii.
 @ (0,-1): [-2, 1]
 @ (0,0): [0, 1]
 '''
-***********************
-PLOT
-***********************
+x = np.array([1,0,0])
+y = np.array([1,-1,0])
+X,Y = np.meshgrid(x,y)
+Z = 2*X*Y + X**2 + Y
+
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+surf = ax.plot_surface(X,Y,Z, rstride=1, cstride=1, cmap=cm.jet, linewidth=0)
+fig.colorbar(surf)
+title = ax.set_title("plot_surface: given X, Y and Z as 2D:")
+title.set_y(1.01)
+
+ax.xaxis.set_major_locator(MaxNLocator(5))
+ax.yaxis.set_major_locator(MaxNLocator(6))
+ax.zaxis.set_major_locator(MaxNLocator(5))
+fig.tight_layout()
+
 #------------------------------------------------------
 #E.6 (answer contained within triple quote)
 #------------------------------------------------------
