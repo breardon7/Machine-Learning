@@ -3,8 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.ticker import MaxNLocator
+from mpl_toolkits.mplot3d import Axes3D
 #------------------------------------------------------
 #E.1 (answer contained within triple quote)
 #------------------------------------------------------
@@ -24,6 +23,7 @@ The function is decreasing when -9 < x < 1 and is concave up when x > 1.
 x2 = np.linspace(-20,10, 100)
 y2 = 2*x2**3+24*x2**2-54*x2
 plt.plot(x2,y2)
+plt.title('E.2')
 plt.show()
 
 #------------------------------------------------------
@@ -40,10 +40,29 @@ f prime   = 6x^2+48x-54
      = x^2+8x-9
      = (x-1)(x+9)
      x = 1, -9
+     
+Global min on [-3,3]: 1
+Global max on [-3,3]: -9
+
+Global min on [-infinity,0]: 1
+Global max on [-infinity,0]: no max
 '''
-***********************
-FIND GLOBAL MIN AND MAX
-***********************
+values = [float('inf')*-1, -9, -.00000000000001, 1]
+
+for x in values:
+    print(2 * x ** 3 + 24 * x ** 2 - 54 * x)
+
+plt.plot(x2,y2)
+plt.xlim(-3,3)
+plt.ylim(-30,0)
+plt.title('E.3.1')
+plt.show()
+
+plt.plot(x2,y2)
+plt.xlim(-100000000000000,0)
+#plt.ylim(-30,0)
+plt.title('E.3.2')
+plt.show()
 
 #------------------------------------------------------
 #E.4
@@ -82,14 +101,18 @@ ii.
 @ (0,-1): [-2, 1]
 @ (0,0): [0, 1]
 '''
-x = np.array([1,0,0])
-y = np.array([1,-1,0])
-X,Y = np.meshgrid(x,y)
-Z = 2*X*Y + X**2 + Y
-
-
+x = np.arange(-20,20)
+y = np.arange(-20,20)
+z = 2*x*y + x**2 + y
 
 fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(x, y, z)
+
+
+
+
+'''fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 surf = ax.plot_surface(X,Y,Z, rstride=1, cstride=1, cmap=cm.jet, linewidth=0)
 fig.colorbar(surf)
@@ -99,7 +122,7 @@ title.set_y(1.01)
 ax.xaxis.set_major_locator(MaxNLocator(5))
 ax.yaxis.set_major_locator(MaxNLocator(6))
 ax.zaxis.set_major_locator(MaxNLocator(5))
-fig.tight_layout()
+fig.tight_layout()'''
 
 #------------------------------------------------------
 #E.6 (answer contained within triple quote)
@@ -179,7 +202,7 @@ ii. eigenvalues: 7, 3
     x2 = -2
     eigenvector = [1,-2]
     
-    check: [3,-6], [3,-6]
+    check: [3,-6] = [3,-6]
 
 iii. eigenvalues: 6, -2
      eigenvectors: [[1, 0.6], [1,-1]]
@@ -214,8 +237,6 @@ iii. eigenvalues: 6, -2
      check: [-2, 2] = [-2,2]
 
 '''
-
-#i.
 v71 = np.matrix('2,0; 0,5')
 v72 = np.matrix('5,1; 4,5')
 v73 = np.matrix('3,5; 3,1')
