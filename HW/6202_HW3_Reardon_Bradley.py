@@ -38,22 +38,28 @@ plt.show()
 #E.3 (answer contained within triple quote)
 #------------------------------------------------------
 '''
-critical points: 1 (local min), -9 (local max)
+critical points: 1, -9
 
 f(x) = 2x^3+24x^2−54x
 f prime   = 6x^2+48x-54
      = x^2+8x-9
      = (x-1)(x+9)
      x = 1, -9
+
+local min: (1,-28)
+    2(1)^3+24(1)^2−54(1) = -28
+    
+local max: (-9, 972)
+    2(-9)^3+24(-9)^2−54(-9) = 972
      
-Global min on [-3,3]: 1
-Global max on [-3,3]: -9
+Global min on [-3,3]: (1, -28)
+Global max on [-3,3]: (-3, 324)
 
-Global min on [-infinity,0]: 1
-Global max on [-infinity,0]: no max
+Global min on [-infinity,0]: no min
+Global max on [-infinity,0]: (-9, 972)
 '''
-values = [float('inf')*-1, -9, -.00000000000001, 1]
-
+#Global min/max [-3,3]
+values = [-3, 1, 3]
 for x in values:
     print(2 * x ** 3 + 24 * x ** 2 - 54 * x)
 
