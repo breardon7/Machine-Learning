@@ -3,6 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
 #------------------------------------------------------
 #E.1 (answer contained within triple quote)
@@ -60,7 +61,7 @@ plt.show()
 
 
 #------------------------------------------------------
-#E.4
+#E.4 (partial answer contained within triple quote)
 #------------------------------------------------------
 '''
 i. 
@@ -75,15 +76,18 @@ ii.
 @ (0,0): [0, 0]
 '''
 
-fig = plt.figure()
-ax = plt.axes(projection='3d')
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
-x = np.linspace(0, 15, 100)
-y = np.linspace(0, 15, 100)
-z = x**2 + y**2
-ax.plot3D(x, y, z, 'gray')
-plt.title('Q4')
+X = np.arange(-50, 50, 0.25)
+Y = np.arange(-50, 50, 0.25)
+X, Y = np.meshgrid(X, Y)
+Z = X**2 + Y**2
+
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
+plt.title('X^2 + Y^2')
 plt.show()
+
 
 #------------------------------------------------------
 #E.5 (partial answer contained within triple quote)
@@ -101,16 +105,17 @@ ii.
 @ (0,0): [0, 1]
 '''
 
-fig = plt.figure()
-ax = plt.axes(projection='3d')
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
-x = np.linspace(0, 15, 100)
-y = np.linspace(0, 15, 100)
-z = 2*x*y + x**2 + y
-ax.plot3D(x, y, z, 'gray')
-plt.title('Q5')
+X = np.arange(-50, 50, 0.25)
+Y = np.arange(-50, 50, 0.25)
+X, Y = np.meshgrid(X, Y)
+Z = 2*X*Y + X**2 + Y
+
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
+plt.title('X^2 + 2XY + Y')
 plt.show()
-
 
 
 #------------------------------------------------------
@@ -126,7 +131,7 @@ v. f(x) = x - 2
 '''
 
 #------------------------------------------------------
-#E.7
+#E.7 (partial answer contained within triple quote)
 #------------------------------------------------------
 
 '''
