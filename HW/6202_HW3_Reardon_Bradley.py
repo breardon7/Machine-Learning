@@ -55,14 +55,9 @@ for x in values:
 plt.plot(x2,y2)
 plt.xlim(-3,3)
 plt.ylim(-30,0)
-plt.title('E.3.1')
+plt.title('E.3')
 plt.show()
 
-plt.plot(x2,y2)
-plt.xlim(-100000000000000,0)
-#plt.ylim(-30,0)
-plt.title('E.3.2')
-plt.show()
 
 #------------------------------------------------------
 #E.4
@@ -72,18 +67,22 @@ i.
 d/dx: 2x
 d/dy: 2y
 
-gradient vector: [2x, 2y]
+gradient vector: [2x 2y]
 
 ii.
 @ (1,2): [2, 4]
 @ (2,1): [4, 2]
 @ (0,0): [0, 0]
 '''
-x = np.array([1,2,0])
-y = np.array([2,1,0])
-z4 = x**2 + y**2
-plt.plot(z4)
-plt.title('E.4')
+
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+
+x = np.linspace(0, 15, 100)
+y = np.linspace(0, 15, 100)
+z = x**2 + y**2
+ax.plot3D(x, y, z, 'gray')
+plt.title('Q4')
 plt.show()
 
 #------------------------------------------------------
@@ -101,28 +100,18 @@ ii.
 @ (0,-1): [-2, 1]
 @ (0,0): [0, 1]
 '''
-x = np.arange(-20,20)
-y = np.arange(-20,20)
-z = 2*x*y + x**2 + y
 
 fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(x, y, z)
+ax = plt.axes(projection='3d')
+
+x = np.linspace(0, 15, 100)
+y = np.linspace(0, 15, 100)
+z = 2*x*y + x**2 + y
+ax.plot3D(x, y, z, 'gray')
+plt.title('Q5')
+plt.show()
 
 
-
-
-'''fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-surf = ax.plot_surface(X,Y,Z, rstride=1, cstride=1, cmap=cm.jet, linewidth=0)
-fig.colorbar(surf)
-title = ax.set_title("plot_surface: given X, Y and Z as 2D:")
-title.set_y(1.01)
-
-ax.xaxis.set_major_locator(MaxNLocator(5))
-ax.yaxis.set_major_locator(MaxNLocator(6))
-ax.zaxis.set_major_locator(MaxNLocator(5))
-fig.tight_layout()'''
 
 #------------------------------------------------------
 #E.6 (answer contained within triple quote)
@@ -241,6 +230,6 @@ v71 = np.matrix('2,0; 0,5')
 v72 = np.matrix('5,1; 4,5')
 v73 = np.matrix('3,5; 3,1')
 
-print('i. eiganvalues:', np.linalg.eig(v71))
-print('ii. eiganvalues:', np.linalg.eig(v72))
-print('iii. eiganvalues:', np.linalg.eig(v73))
+print('i. eig:', np.linalg.eig(v71))
+print('ii. eig:', np.linalg.eig(v72))
+print('iii. eig:', np.linalg.eig(v73))
