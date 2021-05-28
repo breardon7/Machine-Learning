@@ -64,8 +64,8 @@ for x in values:
     print(2 * x ** 3 + 24 * x ** 2 - 54 * x)
 
 plt.plot(x2,y2)
-plt.xlim(-3,3)
-plt.ylim(-30,0)
+plt.xlim(-20,10)
+plt.ylim(-30,1000)
 plt.title('E.3')
 plt.show()
 
@@ -134,10 +134,25 @@ plt.show()
 
 '''
 i. f(x) = 3x - 0.5
+    -0.5 = 3(0) + b
+    b = -0.5
 ii. f(x) = 3x - 4
-iii. f(x) = -x/5 + 2.6
+    m = (14-8)/(6-4) = 3
+    8 = 3(4) + b
+    b = -4
+iii. f(x) = -x/5 + 2.4
+    m = -1/5
+    2 = -2/5 + b
+    12/5 = b
+    b = 2.4
 iv. f(x) = -x + 3
+    1 = m(2) + 3
+    -2 = 2m
+    m = -1
 v. f(x) = x - 2
+    m = (-1-4)/(1-6) = 1
+    4 = 6 + b
+    b = -2
 '''
 
 #------------------------------------------------------
@@ -146,7 +161,7 @@ v. f(x) = x - 2
 
 '''
 i. eigenvalues: 2,5
-   eigenvectors: [[1,0], [0,1]]
+   eigenvectors: [[1 0], [0 1]]
 
 
    [2-L, 0]
@@ -162,10 +177,11 @@ i. eigenvalues: 2,5
    -3x1 = 0x2
    x1 = 0
    x2 = 1
-   eigenvector = [0,1]
+   eigenvector = [0 1]
    
-   check: [0,5] = [0,5]
-   
+   check: 5 * [0 1] = [0 5] 
+          [2 0] * [0 1] = [0 5]
+          [0 5]
    L = 2;
    [2-2, 0]   [0,0]
    [0, 2-5] = [0,-3]
@@ -173,10 +189,11 @@ i. eigenvalues: 2,5
    0x1 = 0x2
    x1 = 1
    x2 = 0
-   eigenvector = [1,0]
+   eigenvector = [1 0]
    
-   check: [2,0] = [2,0]
-   
+   check: 2* [1 0] = [2 0] = [2 0]
+             [2 0] * [1 0] = [2 0]
+             [0 5]
 ii. eigenvalues: 7, 3
     eigenvectors: [[1,2], [1,-2]]
 
@@ -193,11 +210,13 @@ ii. eigenvalues: 7, 3
     2x1 = x2
     x1 = 1
     x2 = 2
-    eigenvector = [1,2]
+    eigenvector = [1 2]
     
-    check: [7, 14], [7, 14]
+    check:     7 * [1 2] = [7 14]
+           [5 1] * [1 2] = [7 14]
+           [4 5]
     
-    L =3;
+    L = 3;
     [5-3, 1]   [2,1]
     [4, 5-3] = [4,2]
     2(x1) + 1(x2) = 0
@@ -205,8 +224,10 @@ ii. eigenvalues: 7, 3
     x1 = 1
     x2 = -2
     eigenvector = [1,-2]
-    
-    check: [3,-6] = [3,-6]
+
+    check:     3 * [1 -2] = [3 -6]
+           [5 1] * [1 -2] = [3 -6]
+           [4 5]
 
 iii. eigenvalues: 6, -2
      eigenvectors: [[1, 0.6], [1,-1]]
@@ -225,9 +246,12 @@ iii. eigenvalues: 6, -2
      3x1 = 5x2
      x1 = 1
      x2 = 0.6
-     eigenvector = [1,0.6]
+     eigenvector = [1 0.6]
      
-     check: [6,3.6] = [6, 3.6]
+    check:     6 * [1 0.6] = [6 3.6]
+           [3 5] * [1 0.6] = [6 3.6]
+           [3 1]
+
      
      L = -2;
      [3-(-2), 5]   [5,5]
@@ -236,9 +260,12 @@ iii. eigenvalues: 6, -2
      -5x1 = 5x2
      x1 = 1
      x2 = -1
-     eigenvector = [1,-1]
+     eigenvector = [1 -1]
      
-     check: [-2, 2] = [-2,2]
+    check:    -2 * [1 -1] = [-2 2]
+           [3 5] * [1 -1] = [-2 2]
+           [3 1]     
+
 
 '''
 v71 = np.matrix('2,0; 0,5')
