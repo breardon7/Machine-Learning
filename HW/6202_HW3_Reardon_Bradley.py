@@ -19,7 +19,14 @@ iv. 12cos(6x-1)sin(6x-1)
 #E.2 (partial answer contained within triple quote)
 #------------------------------------------------------
 '''
-The function is decreasing when -9 < x < 1 and is concave up when x > 1.
+The function is decreasing when -9 < x < 1.
+
+concave up: (-4, infinity)
+f(x) = 2x^3 +24x^2 −54x
+d' = 6x^2 + 48x - 54
+d'' = 12x + 48 = 0
+      12x = -48
+      x = -4
 '''
 x2 = np.linspace(-20,10, 100)
 y2 = 2*x2**3+24*x2**2-54*x2
@@ -32,10 +39,7 @@ plt.show()
 #------------------------------------------------------
 '''
 critical points: 1 (local min), -9 (local max)
-'''
 
-'''
-//scrap work//
 f(x) = 2x^3+24x^2−54x
 f prime   = 6x^2+48x-54
      = x^2+8x-9
