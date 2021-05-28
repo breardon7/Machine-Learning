@@ -68,7 +68,7 @@ i.
 d/dx: 2x
 d/dy: 2y
 
-gradient vector: [2x 2y]
+gradient vector: [2x, 2y]
 
 ii.
 @ (1,2): [2, 4]
@@ -78,8 +78,8 @@ ii.
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
-X = np.arange(-50, 50, 0.25)
-Y = np.arange(-50, 50, 0.25)
+X = np.arange(-5, 5, 0.25)
+Y = np.arange(-5, 5, 0.25)
 X, Y = np.meshgrid(X, Y)
 Z = X**2 + Y**2
 
@@ -107,8 +107,8 @@ ii.
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
-X = np.arange(-50, 50, 0.25)
-Y = np.arange(-50, 50, 0.25)
+X = np.arange(-5, 5, 0.25)
+Y = np.arange(-5, 5, 0.25)
 X, Y = np.meshgrid(X, Y)
 Z = 2*X*Y + X**2 + Y
 
