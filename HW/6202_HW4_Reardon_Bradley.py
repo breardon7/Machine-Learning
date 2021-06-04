@@ -25,8 +25,8 @@ def ppn(p,t):
             e = t[i] - a
             w = w + lr*e*p[i]
             b = b*lr + e
-        E.append(sum(e))
-        plt.plot(E, epoch)
+    E.append(e)
+    plt.plot(E, epoch)
     plt.show()
     for i in range(len(p)):
         plt.plot(p[i][0], p[i][1], 'rx' if (t[i] == 1) else 'bx')
