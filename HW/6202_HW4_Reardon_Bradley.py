@@ -25,8 +25,13 @@ def ppn(p,t):
             e = t[i] - a
             w = w + lr*e*p[i]
             b = b*lr + e
-    E.append(e)
+        E = np.transpose(e)*e
+    print(w)
+    #E.append(e)
     plt.plot(E, epoch)
+    plt.xlabel('error')
+    plt.ylabel('epoch')
+    plt.title('epoch vs error')
     plt.show()
     for i in range(len(p)):
         plt.plot(p[i][0], p[i][1], 'rx' if (t[i] == 1) else 'bx')
@@ -34,6 +39,10 @@ def ppn(p,t):
     m = -w[0]/w[1]
     y = m*x + b
     plt.plot(x,y)
+    plt.arrow(2.4, 3, w[0], w[1], head_width = .2)
+    plt.xlabel('p1')
+    plt.ylabel('p2')
+    plt.title('Hardlim')
     plt.show()
 
 
