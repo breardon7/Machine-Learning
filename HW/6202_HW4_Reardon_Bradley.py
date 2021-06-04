@@ -12,12 +12,12 @@ def hardlim(x):
         return 1
 
 def ppn(p,t):
-    epoch = 100000
+    epoch = 1000
     inputs = 2 # classes
     b = np.ones(1)
     w = np.ones(inputs)
-    lr = 0.1
-    #learning_rate = 0.2
+    lr = 0.15
+    E = []
     for j in range(epoch):
         for i in range(len(p)):
             n = np.dot(w,p[i]) + b
@@ -25,6 +25,9 @@ def ppn(p,t):
             e = t[i] - a
             w = w + lr*e*p[i]
             b = b*lr + e
+        E.append(sum(e))
+        plt.plot(E, epoch)
+    plt.show()
     for i in range(len(p)):
         plt.plot(p[i][0], p[i][1], 'rx' if (t[i] == 1) else 'bx')
     x = np.linspace(0, 5)
