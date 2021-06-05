@@ -12,26 +12,33 @@ def hardlim(x):
         return 1
 
 def ppn(p,t):
-    epoch = 1000
+    epoch = 100
     inputs = 2 # classes
     b = np.ones(1)
     w = np.ones(inputs)
     lr = 0.15
-    E = []
+    epoch_iter = 1
+    epoch_values = []
+    E_values = []
     for j in range(epoch):
+        E = 0.0
         for i in range(len(p)):
             n = np.dot(w,p[i]) + b
             a = hardlim(n)
             e = t[i] - a
             w = w + lr*e*p[i]
             b = b*lr + e
-        E = np.transpose(e)*e
+            E += e * e
+        E_values.append(E)
+        epoch_values.append(epoch_iter)
+        epoch_iter += 1
+
     print(w)
     #E.append(e)
-    plt.plot(E, epoch)
-    plt.xlabel('error')
-    plt.ylabel('epoch')
-    plt.title('epoch vs error')
+    plt.plot(epoch_values, E_values)
+    plt.ylabel('E')
+    plt.xlabel('epoch')
+    plt.title('Error vs Epoch')
     plt.show()
     for i in range(len(p)):
         plt.plot(p[i][0], p[i][1], 'rx' if (t[i] == 1) else 'bx')
@@ -40,8 +47,8 @@ def ppn(p,t):
     y = m*x + b
     plt.plot(x,y)
     plt.arrow(2.4, 3, w[0], w[1], head_width = .2)
-    plt.xlabel('p1')
-    plt.ylabel('p2')
+    plt.xlabel('weight of animal')
+    plt.ylabel('ear length')
     plt.title('Hardlim')
     plt.show()
 

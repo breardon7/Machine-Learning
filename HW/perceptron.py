@@ -1,46 +1,54 @@
 import numpy as np
 import matplotlib.pyplot as plt
-def perceptron_learning_rule(input_vectors, targets):
-    no_of_inputs = 2  # rabbit or bears
-    weights = np.zeros(no_of_inputs)
-    bias = np.zeros(1)
-    epochs = 200  # iterations
-    epochs_count = 0
+def perceptron_learning(inp, target):
+    w = np.zeros(2, dtype=float)
+    b = np.ones(1, dtype=float)
+    observation_count = len(target)
+    observation_float = float(observation_count)
+    mse_values = []
+    epoch_values = []
+    epoch = 20
     learning_rate = 0.1
-    error = []
-    for i in range(epochs):
-        for inputs, target in zip(input_vectors, targets):
-            rule = np.dot(inputs, weights) + bias  # n = w.p + b
-            if rule > 0:
-                activation = 1
-            else:
-                activation = 0
-            error.append(target - activation)  # e[i] = t[i] - a
-            weights += learning_rate * (target - activation) * inputs
-            bias += learning_rate * (target - activation)
-            epochs_count += 1
-    plt.plot(np.array([0, weights[0]]), np.array([weights[1], 0]), 'go-')
-    plt.xlabel("Weight on X")
-    plt.ylabel("Weight on Y")
+    epoch_current = 1
+    for i in range(epoch):
+        error_sum = 0.0
+        for x in range(observation_count):
+            #print('inp val is', inp[x])
+            #print('w is',w)
+            #print('b is',b)
+            n = np.dot(inp[x], w) + b
+            #print('n is',n)
+            a = 1.0 if n > 0 else 0.0
+            #print('a is',a)
+            #print('target is', target[x])
+            e = target[x] - a
+            #print('e is',e)
+            error_sum += float(e * e)
+            #print(error_sum)
+            w = w + learning_rate * e * inp[x]
+            b = b + learning_rate * e
+        #print('error_sum', error_sum)
+        mse = float(error_sum) / observation_float
+        mse_values.append(mse)
+        epoch_values.append(epoch_current)
+        epoch_current += 1
+    # Test final weights and bias against the input data
+    # Every datapoint seems to be accurate
+    for x in range(observation_count):
+        n = np.dot(inp[x], w) + b
+        a = 1.0 if n > 0 else 0.0
+        print(f'The output is {int(a)} and the target is {target[x]}')
+    # Plot error vs epochs
+    plt.plot(epoch_values, mse_values)
+    plt.xlabel('Epoch')
+    plt.ylabel('Error (MSE)')
+    plt.title('Error (MSE) vs Epoch')
     plt.show()
-    m = -weights[0] / weights[1]
-    x = np.linspace(-5, 5)
-    y = m * x - bias / weights[1]
-    for i in range(len(targets)):
-        plt.plot(input_vectors[i][0], input_vectors[i][1], 'ro' if (targets[i] == 1.0) else 'bo')
-    plt.plot(x, y, 'g-')
-    plt.show()
-    print("The decision boundary is of weight: ", weights)
-# First Trial
-input_vectors = [np.array([1, 4]), np.array([1, 5]),
-                 np.array([2, 4]), np.array([2, 5]), np.array([3, 1]),
-                 np.array([3, 2]), np.array([4, 1]), np.array([4, 2])]
-targets = np.array([0, 0, 0, 0, 1, 1, 1, 1])
-perceptron_learning_rule(input_vectors, targets)
-# Second Trial
-input_vectors2= [np.array([1, 3]), np.array([1, 4]), np.array([1, 5]),
-                 np.array([2, 4]), np.array([2, 4]), np.array([2, 5]),
-                 np.array([3, 1]), np.array([3, 2]), np.array([3, 3]), np.array([3, 4]),
-                 np.array([4, 1]), np.array([4, 2]), np.array([4, 3]), np.array([4, 4])]
-targets2 = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1])
-perceptron_learning_rule(input_vectors2, targets2)
+    # Plot decision boundary
+    #Turn weights and bias into a line
+    #plot the line
+    #plot each point with the color for its classification
+inp = [np.array([1,4]), np.array([1,5]), np.array([2,4]), np.array([2,5]),
+       np.array([3,1]), np.array([3,2]), np.array([4,1]), np.array([4,2])]
+target = [0, 0, 0, 0, 1, 1, 1, 1]
+perceptron_learning(inp, target)
