@@ -48,3 +48,42 @@ plt.xlabel('x')
 plt.ylabel('f(x)')
 plt.title('f(x) vs x')
 plt.show()
+
+
+# E2
+'''
+point = [1 1]
+direction = [-1 1]
+'''
+# i.
+'''
+f(x) = 7/2x1^2 - 6x1x2 - x2^2
+
+first gradient  = [7x1-6x2, -6x1-2x2]
+-(7(1)-6(1)) + (-6(1)-2(1)) = -9
+
+second gradient = []
+
+'''
+
+# ii.
+'''
+f(x) = 5x1^2 - 6x1x2 + 5x2^2 + 4x1 + 4x2
+
+first gradient  = [10x1-6x2-4, 10x2-6x1+4]
+-(10(1)-6(1)-4) + (10(1)-6(1)-4) = 0
+
+second gradient = []
+
+'''
+
+# iii.
+'''
+f(x) = -7/2x1^2 - 6x1x2 + x2^2
+
+first gradient  = [-7x1-6x2, 4x2-6x1]
+-(-7(1)-6(1)) + (4(1)-6(1)) = 11
+
+second gradient = []
+
+'''

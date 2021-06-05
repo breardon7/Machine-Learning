@@ -12,7 +12,7 @@ def hardlim(x):
         return 1
 
 def ppn(p,t):
-    epoch = 100
+    epoch = 50
     inputs = 2 # classes
     b = np.ones(1)
     w = np.ones(inputs)
