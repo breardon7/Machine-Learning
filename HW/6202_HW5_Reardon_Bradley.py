@@ -59,9 +59,12 @@ direction = [-1 1]
 f(x) = 7/2x1^2 - 6x1x2 - x2^2
 
 first gradient  = [7x1-6x2, -6x1-2x2]
--(7(1)-6(1)) + (-6(1)-2(1)) = -9
+-(7(1)-6(1)) + (-6(1)-2(1)) = -9/sqrt(2)
 
-second gradient = []
+second gradient = [7  -6]
+                  [-6 -2]
+[-1 1]*[7  -6]* [-1] = [-13 4] * [-1] = 17/2
+       [-6 -2]  [ 1]             [ 1]
 
 '''
 
@@ -72,19 +75,23 @@ f(x) = 5x1^2 - 6x1x2 + 5x2^2 + 4x1 + 4x2
 first gradient  = [10x1-6x2-4, 10x2-6x1+4]
 -(10(1)-6(1)-4) + (10(1)-6(1)-4) = 0
 
-second gradient = []
-
+second gradient = [10 -6]
+                  [-6 10]
+[-1 1]*[10 -6]* [-1] = [-16 16] *[-1] = 16
+       [-6 10]  [ 1]             [ 1]                 
 '''
 
 # iii.
 '''
 f(x) = -7/2x1^2 - 6x1x2 + x2^2
 
-first gradient  = [-7x1-6x2, 4x2-6x1]
--(-7(1)-6(1)) + (4(1)-6(1)) = 11
+first gradient  = [-7x1-6x2, 2x2-6x1]
+-(-7(1)-6(1)) + (2(1)-6(1)) = 9
 
-second gradient = []
-
+second gradient = [-7, -6]
+                  [-6   2]
+[-1 1]*[-7 -6]* [-1] = [1 8] * [-1] = 7/2
+       [-6  2]  [ 1]           [ 1]  
 '''
 
 # E3
@@ -94,7 +101,7 @@ x = np.linspace(-100,100)
 y1 = e**1-e**1*(x-1)
 y2 = e**1-e**1*(x-1)-1/2*e**1*(x-1)**2
 y3 = e**1-e**1*(x-1)-1/2*e**1*(x-1)**2-1/6*e**1*(x-0)**3
-labels = ['first-order', 'second-order', 'third-order']
+labels = ['original function', 'first-order', 'second-order', 'third-order']
 
 plt.plot(x,y1, 'b')
 plt.plot(x,y2, 'r')
@@ -106,3 +113,6 @@ plt.legend(labels)
 plt.show()
 
 # iv.
+'''
+As we move into higher order approximations, we move closer to the original f(x).
+'''
