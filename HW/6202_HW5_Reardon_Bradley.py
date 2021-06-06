@@ -2,7 +2,6 @@
 #// 6202 HW5
 
 # E1
-
 # f(x) = x^4 - (x^3)/2 + 1
 
 # i.
@@ -87,3 +86,23 @@ first gradient  = [-7x1-6x2, 4x2-6x1]
 second gradient = []
 
 '''
+
+# E3
+
+e = np.e
+x = np.linspace(-100,100)
+y1 = e**1-e**1*(x-1)
+y2 = e**1-e**1*(x-1)-1/2*e**1*(x-1)**2
+y3 = e**1-e**1*(x-1)-1/2*e**1*(x-1)**2-1/6*e**1*(x-0)**3
+labels = ['first-order', 'second-order', 'third-order']
+
+plt.plot(x,y1, 'b')
+plt.plot(x,y2, 'r')
+plt.plot(x,y3, 'y')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Taylor Series Appoximations')
+plt.legend(labels)
+plt.show()
+
+# iv.
