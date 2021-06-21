@@ -69,3 +69,38 @@ new_targets = np.array([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1])
 
 ppn(new_inputs, new_targets)
 
+# ----------------------exam 2 stuff-----------------------------
+
+'''
+# Gradient Boosting model
+gb_clf = GradientBoostingClassifier(n_estimators=100, learning_rate=0.05)
+gb_clf.fit(X_train, y_train)
+
+# Gradient Boosting Predictions
+gb_pred = gb_clf.predict(X_test)
+gb_score = gb_clf.predict_proba(X_test)
+
+# Gradient Boosting Results
+
+print("\n")
+print("Results Using Gradient Boosting & All Features: \n")
+
+print("Classification Report: ")
+print(classification_report(y_test,gb_pred))
+print("\n")
+
+print("Accuracy : ", accuracy_score(y_test, gb_pred) * 100)
+print("\n")
+
+print("ROC_AUC : ", roc_auc_score(y_test,gb_score[:,1]) * 100)
+
+#Train Data
+X_new = df_predict.values[:, 1:]
+
+
+new_output = gb_clf.predict(X_new)
+print(new_output)
+
+df_predict['Accident_Severity'] = new_output
+df_predict.to_csv(r'C:\Users\brear\OneDrive\Desktop\Grad School\DATS 6202\Machine-Learning\Test_submission_Reardon_Bradley_Ver_GB.csv', index=False)
+'''

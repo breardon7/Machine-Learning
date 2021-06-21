@@ -24,13 +24,7 @@ t = np.sin(np.exp(p))
 
 #%%-----------------------------------------------------------------------
 # 2-
-'''from sklearn.neural_network import MLPRegressor
-from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(x, y, random_state=100)
-regr = MLPRegressor(random_state=1, max_iter=500)
-regr.fit(X_train, y_train)
-'''
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
@@ -65,5 +59,6 @@ Higher hidden layer counts decrease MSE, which means our model is more likely to
 # 6-
 '''
 The performance index is virtually zero, meaning the model is performing nearly perfectly.
-The figure shows a plot of predictions versus the actual targets, or MSE.
+The first figure shows the output of the original function compared to the network output.
+The second figure shows a plot of predictions versus the actual targets, or MSE.
 '''
